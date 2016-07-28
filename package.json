@@ -1,11 +1,8 @@
 {
   "name": "mdcli",
   "version": "1.0.0",
-  "description": "A markdown CLI",
+  "description": "A CLI to convert md to html optionally using a stylesheet file.",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "keywords": [
     "markdown",
     "cli"
