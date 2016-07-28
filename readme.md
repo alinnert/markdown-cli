@@ -8,7 +8,12 @@ You have a .md file and quickly want to create a .html file? Maybe also using yo
 
 ## Setup
 
-(not yet...)
+Currently:
+
+- clone repo
+- use the following commands in the project directory:
+- `npm i`
+- `npm i -g`
 
 ## Usage
 
