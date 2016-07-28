@@ -12,8 +12,8 @@ Currently:
 
 - clone repo
 - use the following commands in the project directory:
-- `npm i`
-- `npm i -g`
+- `npm i` (installs dependencies)
+- `npm i -g` (installs this module globally and registers the `mdown` command)
 
 ## Usage
 
