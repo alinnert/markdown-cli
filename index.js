@@ -13,8 +13,8 @@ commander
   .usage('[options] <files...>')
   .option('-s, --stylesheet [css-path]', 'Define path to the css file that should be used')
   .option('-b, --breaks', 'Add <br> on single line breaks')
-  .option('-l, --linkify', 'Auto-convert links')
-  .option('-t, --typographer', 'Enable typographer')
+  .option('-l, --linkify', 'Make URLs clickable automatically')
+  .option('-t, --typographer', 'Enable typographer. Enables nice typography, e.g. "Hello" -> „Hello“')
   .option('-a, --all-options', 'Enable -b, -l, and -t')
   .parse(process.argv);
 

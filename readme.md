@@ -47,7 +47,10 @@ This will generate the following files: `readme-1.html`, `readme-2.html` and `re
 If you use a stylesheet here it will be applied to all files.
 
 ## Changelog
-### 2.0.0
+### 2.0.1 (2016-12-12)
+- **[CHG]** Updated description of some options to be more clear
+
+### 2.0.0 (2016-12-12)
 - **[NEW]** Rebuild using [`commander`](https://github.com/tj/commander.js)
 - **[NEW]** Added support for processing multiple .md files at once
 - **[NEW]** Added options `--breaks`, `--linkify`, `--typographer`, and `--all-options`
