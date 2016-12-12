@@ -2,27 +2,39 @@
 const commander = require('commander');
 const fs = require('fs');
 const chalk = require('chalk');
-const md = require('markdown-it')({
-  breaks: true,
-  linkify: true,
-  typographer: true,
+const markdownIt = require('markdown-it');
+const CleanCSS = require('clean-css');
+const cleanCSS = new CleanCSS();
+const packageFile = require('./package.json');
+let mdFileContents, cssFileContent;
+
+commander
+  .version(packageFile.version)
+  .usage('[options] <files...>')
+  .option('-s, --stylesheet [css-path]', 'Define path to the css file that should be used')
+  .option('-b, --breaks', 'Add <br> on single line breaks')
+  .option('-l, --linkify', 'Auto-convert links')
+  .option('-t, --typographer', 'Enable typographer')
+  .option('-a, --all-options', 'Enable -b, -l, and -t')
+  .parse(process.argv);
+
+const markdownItOptions = {
+  breaks: commander.breaks || commander.allOptions,
+  linkify: commander.linkify || commander.allOptions,
+  typographer: commander.typographer || commander.allOptions,
   quotes: '„“‚‘'
-});
-
-commander.version('2.0.0');
-commander.usage('[options] <files...>');
-commander.option('-s, --stylesheet [css-path]', 'Define path to the css file that should be used.');
-commander.parse(process.argv);
-
+};
+const md = markdownIt(markdownItOptions);
 const files = commander.args;
 const encoding = 'UTF-8';
-let mdFileContents, cssFileContent;
 
 console.log('');
 
 try {
   mdFileContents = files.map(file => fs.readFileSync(file, {encoding}));
-  cssFileContent = commander.stylesheet ? fs.readFileSync(commander.stylesheet, {encoding}) : '';
+  cssFileContent = commander.stylesheet
+    ? cleanCSS.minify(fs.readFileSync(commander.stylesheet, {encoding})).styles
+    : '';
 }
 catch (error) {
   switch (error.code) {
@@ -32,7 +44,7 @@ catch (error) {
       break;
     }
     default: {
-      console.error(`${chalk.red('  Unknown error:')}\n${error.Error}`);
+      console.error(`${chalk.red('  Unknown error:')}\n  ${error.Error || error}`);
     }
   }
 }
@@ -40,7 +52,7 @@ catch (error) {
 mdFileContents.forEach((content, index) => {
   const renderedHtml = md.render(content);
   const mdFile = files[index];
-  const html = `<html><head><meta charset="utf-8"><title>${mdFile}</title><style>${cssFileContent}</style></head><body><div id="wrapper">${renderedHtml}</div></body></html>`;
+  const html = `<html><head><meta charset="utf-8"><title>${mdFile}</title><style>${cssFileContent}</style></head><body class="markdown-body"><div id="wrapper">${renderedHtml}</div></body></html>`;
   const targetFileName = mdFile.replace(/\.md$/, '.html');
 
   console.log(`${chalk.blue('  Output file:')} ${targetFileName}`);

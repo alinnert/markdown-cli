@@ -2,6 +2,14 @@
   "name": "mdcli",
   "version": "2.0.0",
   "description": "A CLI to convert md to html optionally using a stylesheet file.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alinnert/markdown-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/alinnert/markdown-cli/issues"
+  },
+  "homepage": "https://github.com/alinnert/markdown-cli",
   "main": "index.js",
   "keywords": [
     "markdown",
@@ -14,7 +22,11 @@
   "license": "MIT",
   "dependencies": {
     "chalk": "^1.1.3",
+    "clean-css": "^3.4.22",
     "commander": "^2.9.0",
     "markdown-it": "^7.0.0"
+  },
+  "engines": {
+    "node": ">=4.0"
   }
 }
