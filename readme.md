@@ -47,6 +47,9 @@ This will generate the following files: `readme-1.html`, `readme-2.html` and `re
 If you use a stylesheet here it will be applied to all files.
 
 ## Changelog
+### 2.0.2 (2019-06-17)
+- **[FIX]** Updated dependencies
+
 ### 2.0.1 (2016-12-12)
 - **[CHG]** Updated description of some options to be more clear
 

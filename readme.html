@@ -1,0 +1,51 @@
+<html><head><meta charset="utf-8"><title>.\readme.md</title><style></style></head><body class="markdown-body"><div id="wrapper"><h1>Markdown CLI</h1>
+<p>A CLI to convert md to html, optionally using a stylesheet file.</p>
+<h2>Solved problem</h2>
+<p>You have a .md file and quickly want to create a .html file? Maybe also using your own CSS? Here you go.</p>
+<h2>Install</h2>
+<pre><code class="language-bash">$ npm i -g mdcli
+</code></pre>
+<h2>Usage</h2>
+<pre><code class="language-bash">$ mdown --help
+
+  Usage: index [options] &lt;files...&gt;
+
+  Options:
+
+    -h, --help                   output usage information
+    -V, --version                output the version number
+    -s, --stylesheet [css-path]  Define path to the css file that should be used
+    -b, --breaks                 Add &lt;br&gt; on single line breaks
+    -l, --linkify                Auto-convert links
+    -t, --typographer            Enable typographer
+    -a, --all-options            Enable -b, -l, and -t
+</code></pre>
+<h3>No stylesheets</h3>
+<pre><code class="language-bash">$ mdown readme.md
+</code></pre>
+<h3>Using a custom *.css file</h3>
+<pre><code class="language-bash">$ mdown --stylesheet readme.css readme.md
+$ mdown -s readme.css readme.md
+</code></pre>
+<h3>Multiple files</h3>
+<pre><code class="language-bash">$ mdown readme-1.md readme-2.md readme-3.md
+</code></pre>
+<p>This will generate the following files: <code>readme-1.html</code>, <code>readme-2.html</code> and <code>readme-3.html</code></p>
+<p>If you use a stylesheet here it will be applied to all files.</p>
+<h2>Changelog</h2>
+<h3>2.0.1 (2016-12-12)</h3>
+<ul>
+<li><strong>[CHG]</strong> Updated description of some options to be more clear</li>
+</ul>
+<h3>2.0.0 (2016-12-12)</h3>
+<ul>
+<li><strong>[NEW]</strong> Rebuild using <a href="https://github.com/tj/commander.js"><code>commander</code></a></li>
+<li><strong>[NEW]</strong> Added support for processing multiple .md files at once</li>
+<li><strong>[NEW]</strong> Added options <code>--breaks</code>, <code>--linkify</code>, <code>--typographer</code>, and <code>--all-options</code></li>
+<li><strong>[CHG]</strong> CSS is now being minified before included in the output file</li>
+</ul>
+<h3>1.0.0</h3>
+<ul>
+<li>Initial release</li>
+</ul>
+</div></body></html>
